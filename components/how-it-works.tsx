@@ -4,7 +4,7 @@ import { SectionLabel } from "@/components/section-label"
 const steps = [
   { title: "Menú QR", body: "El cliente escanea y ve el menú actualizado al instante, sin imprimir nada." },
   { title: "Toma de orden", body: "El mesero captura el pedido desde tablet, con cambios de mesa y reapertura si hace falta." },
-  { title: "Impresión por estación", body: "La orden se imprime automáticamente segmentada: cocina caliente, fría, barra." },
+  { title: "Impresión por estación", body: "La orden se imprime automáticamente segmentada: cocina caliente, fría y bebidas." },
   { title: "Cobro", body: "Ticket de cobro con desglose por terminal, sin cuadres manuales al cierre." },
   { title: "Reportes", body: "Ventas, horarios pico y platillos top, exportables a Excel cuando los necesites." },
 ]

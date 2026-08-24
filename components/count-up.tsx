@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { useReveal } from "@/hooks/use-reveal"
 
 export function CountUp({
@@ -16,15 +17,11 @@ export function CountUp({
   className?: string
 }) {
   const { ref, isVisible } = useReveal<HTMLSpanElement>()
+  const prefersReducedMotion = usePrefersReducedMotion()
   const [value, setValue] = useState(0)
 
   useEffect(() => {
-    if (!isVisible) return
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setValue(to)
-      return
-    }
+    if (!isVisible || prefersReducedMotion) return
 
     let start: number | null = null
     let frame: number
@@ -39,11 +36,13 @@ export function CountUp({
 
     frame = requestAnimationFrame(step)
     return () => cancelAnimationFrame(frame)
-  }, [isVisible, to, duration])
+  }, [isVisible, prefersReducedMotion, to, duration])
+
+  const displayValue = prefersReducedMotion ? to : value
 
   return (
     <span ref={ref} className={className}>
-      {value}
+      {displayValue}
       {suffix}
     </span>
   )

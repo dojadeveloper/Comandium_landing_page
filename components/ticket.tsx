@@ -2,25 +2,23 @@
 
 import { useEffect, useState } from "react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
-
-const zigzag =
-  "polygon(0 0,100% 0,100% 96%,95% 100%,90% 96%,85% 100%,80% 96%,75% 100%,70% 96%,65% 100%,60% 96%,55% 100%,50% 96%,45% 100%,40% 96%,35% 100%,30% 96%,25% 100%,20% 96%,15% 100%,10% 96%,5% 100%,0 96%)"
 
 const START_DELAY_MS = 250
 const DURATION_MS = 750
 
 export function Ticket({ className }: { className?: string }) {
-  const [printed, setPrinted] = useState(false)
+  const prefersReducedMotion = usePrefersReducedMotion()
+  const [timerFired, setTimerFired] = useState(false)
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setPrinted(true)
-      return
-    }
-    const timer = setTimeout(() => setPrinted(true), START_DELAY_MS)
+    if (prefersReducedMotion) return
+    const timer = setTimeout(() => setTimerFired(true), START_DELAY_MS)
     return () => clearTimeout(timer)
-  }, [])
+  }, [prefersReducedMotion])
+
+  const printed = prefersReducedMotion || timerFired
 
   return (
     <div className={cn("flex flex-col items-center", className)}>

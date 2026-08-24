@@ -2,23 +2,23 @@
 
 import { useEffect, useRef, useState } from "react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
+
 export function useReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null)
-  const [isVisible, setIsVisible] = useState(false)
+  const prefersReducedMotion = usePrefersReducedMotion()
+  const [observedVisible, setObservedVisible] = useState(false)
 
   useEffect(() => {
+    if (prefersReducedMotion) return
+
     const node = ref.current
     if (!node) return
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setIsVisible(true)
-      return
-    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setObservedVisible(true)
           observer.disconnect()
         }
       },
@@ -27,7 +27,7 @@ export function useReveal<T extends HTMLElement>() {
 
     observer.observe(node)
     return () => observer.disconnect()
-  }, [])
+  }, [prefersReducedMotion])
 
-  return { ref, isVisible }
+  return { ref, isVisible: prefersReducedMotion || observedVisible }
 }
