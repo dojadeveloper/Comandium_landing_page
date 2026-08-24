@@ -5,6 +5,7 @@ import { Menu } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { WHATSAPP_DEMO_URL } from "@/lib/whatsapp"
+import { DEMO_URL } from "@/lib/demo"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -70,6 +71,16 @@ export function Nav() {
             </li>
           ))}
           <li>
+            <a
+              href={DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative text-sm font-medium text-muted-foreground transition-colors duration-300 hover:text-foreground after:absolute after:-bottom-1 after:left-1/2 after:h-px after:w-full after:origin-center after:-translate-x-1/2 after:scale-x-0 after:bg-foreground after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"
+            >
+              Ver demo
+            </a>
+          </li>
+          <li>
             <Button asChild>
               <a href={WHATSAPP_DEMO_URL} target="_blank" rel="noopener noreferrer">
                 Solicita una demo
@@ -101,6 +112,15 @@ export function Nav() {
                   </SheetClose>
                 </li>
               ))}
+              <li className="pt-2">
+                <SheetClose asChild>
+                  <Button variant="outline" asChild className="w-full">
+                    <a href={DEMO_URL} target="_blank" rel="noopener noreferrer">
+                      Ver demo
+                    </a>
+                  </Button>
+                </SheetClose>
+              </li>
               <li className="pt-2">
                 <SheetClose asChild>
                   <Button asChild className="w-full">

@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react"
 import { Reveal } from "@/components/reveal"
 import { Button } from "@/components/ui/button"
 import { WHATSAPP_DEMO_URL } from "@/lib/whatsapp"
+import { DEMO_URL } from "@/lib/demo"
 
 export function Cta() {
   return (
@@ -18,16 +19,28 @@ export function Cta() {
           Agenda una demo de 20 minutos. Te mostramos el sistema con tu propio menú y resolvemos tus dudas sin compromiso.
         </p>
 
-        <Button
-          size="lg"
-          className="mt-8 h-11 bg-background px-6 text-[0.95rem] text-foreground hover:bg-background/90"
-          asChild
-        >
-          <a href={WHATSAPP_DEMO_URL} target="_blank" rel="noopener noreferrer">
-            Solicita una demo
-            <ArrowRight className="size-4 transition-transform duration-300 group-hover/button:translate-x-1" />
-          </a>
-        </Button>
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <Button
+            size="lg"
+            className="h-11 bg-background px-6 text-[0.95rem] text-foreground hover:bg-background/90"
+            asChild
+          >
+            <a href={WHATSAPP_DEMO_URL} target="_blank" rel="noopener noreferrer">
+              Solicita una demo
+              <ArrowRight className="size-4 transition-transform duration-300 group-hover/button:translate-x-1" />
+            </a>
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="h-11 border-primary-foreground/30 bg-transparent px-6 text-[0.95rem] text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+            asChild
+          >
+            <a href={DEMO_URL} target="_blank" rel="noopener noreferrer">
+              Ver demo en vivo
+            </a>
+          </Button>
+        </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-6 font-mono text-sm text-primary-foreground/85">
           <a href="mailto:dojaque.developer@gmail.com" className="font-semibold hover:underline">

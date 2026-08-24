@@ -5,6 +5,7 @@ import { Reveal } from "@/components/reveal"
 import { Ticket } from "@/components/ticket"
 import { CountUp } from "@/components/count-up"
 import { WHATSAPP_DEMO_URL } from "@/lib/whatsapp"
+import { DEMO_URL } from "@/lib/demo"
 
 const stats = [
   { to: 184, suffix: "", label: "Órdenes hoy" },
@@ -38,7 +39,9 @@ export function Hero() {
               </a>
             </Button>
             <Button size="lg" variant="outline" className="h-11 px-6 text-[0.95rem]" asChild>
-              <a href="#como-funciona">Ver cómo funciona</a>
+              <a href={DEMO_URL} target="_blank" rel="noopener noreferrer">
+                Ver demo en vivo
+              </a>
             </Button>
           </div>
 
