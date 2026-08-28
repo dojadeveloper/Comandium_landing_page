@@ -1,7 +1,16 @@
 "use client"
 
 import { useState } from "react"
-import { Building2, Check, ClipboardList, Rocket } from "lucide-react"
+import {
+  Building2,
+  Check,
+  ClipboardList,
+  GraduationCap,
+  HardDrive,
+  LifeBuoy,
+  Rocket,
+  Settings2,
+} from "lucide-react"
 
 import { Reveal } from "@/components/reveal"
 import { SectionLabel } from "@/components/section-label"
@@ -16,7 +25,7 @@ const plans = [
   {
     name: "Básico",
     icon: ClipboardList,
-    monthly: 799.99,
+    monthly: 1199.99,
     note: "El punto de partida para dejar el papel atrás",
     featured: false,
     features: [
@@ -32,7 +41,7 @@ const plans = [
   {
     name: "Pro",
     icon: Rocket,
-    monthly: 1699.99,
+    monthly: 1799.99,
     note: "El más elegido: control financiero y de equipo",
     featured: true,
     features: [
@@ -47,7 +56,7 @@ const plans = [
   {
     name: "Premium",
     icon: Building2,
-    monthly: 3299.99,
+    monthly: 3999.99,
     note: "Para cadenas y operaciones multi-sucursal",
     featured: false,
     features: [
@@ -57,6 +66,29 @@ const plans = [
       "Sistema de fidelidad de clientes",
       "Gestión multi-sucursal",
     ],
+  },
+]
+
+const installationIncludes = [
+  {
+    icon: Settings2,
+    title: "Sistema configurado",
+    description: "Menú, estaciones, usuarios y terminales listos para operar desde el día uno.",
+  },
+  {
+    icon: HardDrive,
+    title: "Hardware instalado",
+    description: "Impresoras, terminales y equipo conectados y probados en tu local.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Capacitación de tu equipo",
+    description: "Meseros, cocina y administración aprenden el flujo completo antes de arrancar.",
+  },
+  {
+    icon: LifeBuoy,
+    title: "Soporte durante el arranque",
+    description: "Te acompañamos en las primeras semanas para resolver cualquier ajuste.",
   },
 ]
 
@@ -203,6 +235,35 @@ export function Pricing() {
         Precios en pesos mexicanos, más IVA. El onboarding es personalizado — no hay registro
         automático.
       </p>
+
+      <Reveal className="mt-20">
+        <div className="mx-auto max-w-2xl text-center">
+          <h3 className="font-heading text-[clamp(1.5rem,2.4vw,2rem)] leading-tight font-bold text-foreground">
+            ¿Qué incluye la instalación?
+          </h3>
+          <p className="mt-3 text-muted-foreground">
+            Cada plan llega acompañado de una puesta en marcha completa en tu restaurante. Cotizamos
+            la instalación según el tamaño y las estaciones de tu local.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {installationIncludes.map((item) => (
+            <div
+              key={item.title}
+              className="rounded-2xl border border-border bg-card p-6 transition-shadow duration-300 hover:shadow-lg hover:shadow-black/5"
+            >
+              <div className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#6B4D9A] text-primary-foreground shadow-sm shadow-primary/25">
+                <item.icon className="size-5" strokeWidth={1.75} />
+              </div>
+              <div className="mt-4 font-heading text-sm font-semibold text-card-foreground">
+                {item.title}
+              </div>
+              <p className="mt-1.5 text-sm text-card-foreground/70">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </Reveal>
     </section>
   )
 }
