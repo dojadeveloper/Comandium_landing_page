@@ -25,7 +25,7 @@ const plans = [
   {
     name: "Básico",
     icon: ClipboardList,
-    monthly: 899.99,
+    monthly: 599.99,
     note: "El punto de partida para dejar el papel atrás",
     featured: false,
     features: [
@@ -41,7 +41,7 @@ const plans = [
   {
     name: "Pro",
     icon: Rocket,
-    monthly: 1599.99,
+    monthly: 1199.99,
     note: "El más elegido: control financiero y de equipo",
     featured: true,
     features: [
@@ -56,7 +56,7 @@ const plans = [
   {
     name: "Premium",
     icon: Building2,
-    monthly: 3499.99,
+    monthly: 2499.99,
     note: "Para cadenas y operaciones multi-sucursal",
     featured: false,
     features: [
