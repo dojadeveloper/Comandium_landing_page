@@ -41,7 +41,7 @@ const plans = [
   {
     name: "Pro",
     icon: Rocket,
-    monthly: 1199.99,
+    monthly: 1099.99,
     note: "El más elegido: control financiero y de equipo",
     featured: true,
     features: [
